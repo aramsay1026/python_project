@@ -77,7 +77,7 @@ def addSupplier(request):
     print "----------"
     print this_user.first_name
     print "----------"
-    val=Supplier.objects.create(meals_available=request.POST['numOfFood'],cooked_at=request.POST['cookedOn'],use_by=request.POST['cookedOn'])
+    val=Supplier.objects.create(meals_available=request.POST['numOfFood'],cooked_at=request.POST['cookedOn'], use_by=request.POST['cookedOn'])
     val.users.add(this_user)
     print "*********************************"
     print request.POST.get('checkDrive',False)
