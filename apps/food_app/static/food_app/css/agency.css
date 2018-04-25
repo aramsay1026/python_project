@@ -150,6 +150,10 @@ img::-moz-selection {
   background: transparent;
 }
 
+select#shift {
+  margin:10px;
+}
+
 #mainNav {
   position:relative;
   z-index:0;
@@ -315,6 +319,7 @@ input.checkbox{
     border: none;
     outline: none;
 }
+
 
 input.type_input{
   padding: 15px;
