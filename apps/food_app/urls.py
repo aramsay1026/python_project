@@ -14,5 +14,11 @@ urlpatterns = [
     url(r'^volunteers$',views.volunteer_home),
     url(r'^volunteer_join$',views.volunteer_add),
     url(r'^shelter$',views.shelter),
-    url(r'^place$', views.place)
+    url(r'^about$', views.about),
+    url(r'^about_suppliers$', views.about_suppliers),
+    url(r'^about_volunteers$', views.about_volunteers),
+    url(r'^about_shelters$', views.about_shelters),
+    url(r'^about_team$', views.about_team),
+    url(r'^contact_us$', views.contact_us)
+
 ]
