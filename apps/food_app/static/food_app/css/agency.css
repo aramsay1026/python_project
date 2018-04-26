@@ -400,6 +400,17 @@ button:hover {
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
+#modal-content.container{
+z-index: 1;
+    text-align: left;
+    color:#212529;
+    background: white;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #65e765;
+    width: 80%; /* Could be more or less, depending on screen size */
+
+}
+
 div#id01.modal{
 z-index: 1;
 background-color: transparent;

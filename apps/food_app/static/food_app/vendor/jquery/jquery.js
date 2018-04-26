@@ -51,26 +51,47 @@ $( document ).ready(function() {
 
     $("#first").change(function(){
     	if($(this).prop('checked')){
-    		$("#append_1").html("<p class='warn' id='1'>Volunteers must be licensed and have access to a reliable vehicle</p>")};
+    		$("#append_1").html("<p class='warn' id='1'>Volunteers must be licensed and have access to a reliable vehicle</p>");
     		$("#1.warn").show();
     		$("#2.warn").hide();
     		$("#3.warn").hide();
+      }
+      else{
+          $("#append_1").html(" ");
+          $("#2.warn").hide();
+          $("#3.warn").hide();
+          $("#1.warn").hide();
+      }
     });
 
     $("#second").change(function(){
-    	if($(this).prop('checked')){
-    		$("#append_2").html("<p class='warn' id='2'>All prepared food must meet USDA standards for proper food safety and handling</p>")};
-    		$("#2.warn").show();
-    		$("#3.warn").hide();
-    		$("#1.warn").hide();
+    	 if($(this).prop('checked')){
+      		$("#append_2").html("<p class='warn' id='2'>All prepared food must meet USDA standards for proper food safety and handling</p>");
+      		$("#2.warn").show();
+      		$("#3.warn").hide();
+      		$("#1.warn").hide();
+      }
+        else{
+          $("#append_2").html(" ");
+          $("#2.warn").hide();
+          $("#3.warn").hide();
+          $("#1.warn").hide();
+      }
     });
 
     $("#last").change(function(){
     	if($(this).prop('checked')){
-    		$("#append_3").html("<p class='warn' id='3'>Potential Food Banks must be verified as legal non-profit entities by our team</p>")};
+    		$("#append_3").html("<p class='warn' id='3'>Potential Food Banks must be verified as legal non-profit entities by our team</p>");
     		$("#3.warn").show();
     		$("#1.warn").hide();
     		$("#2.warn").hide();
+      }
+      else{
+          $("#append_3").html(" ");
+          $("#2.warn").hide();
+          $("#3.warn").hide();
+          $("#1.warn").hide();
+      }
     });
 
     $('input[type="checkbox"]').on('change', function() {
