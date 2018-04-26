@@ -39,22 +39,16 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">About FoodShare</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Suppliers</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Volunteers</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Food Banks</a>
+              <a class="nav-link js-scroll-trigger" href="#services">Services</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">Our Team</a>
+              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#team">Team</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
@@ -79,7 +73,7 @@
       <!-- Log in pop up box -->
   <div id="id01" class="modal">
       <button class="close" id="log_close" title="Close Modal">&times;</button>
-          <form class="modal-content" action="/login" method="POST">
+          <form class="modal-content" action="/welcome" method="POST">
             {% csrf_token %}
               <div class="container">
                   <h1 class="login">Log in</h1>
@@ -106,7 +100,7 @@
     <div id="id02" class="modal">
         <button class="close" title="Close Modal">
             &times;</button>
-          <form class="modal-content" id="register" action="/welcome" method="POST">
+          <form class="modal-content" id="register" action="" method="POST">
             {% csrf_token %}
             <div class="container">
                 <h1 class ="register">Register</h1>
@@ -139,7 +133,7 @@
       </div>
 
       <!-- User Type Pop Up -->
-s
+
       <div id="id03" class="modal">
       <button class="close" id="type_close" title="Close Modal">&times;</button>
           <form class="modal-content" id="type" action="/register_process" method="POST">
