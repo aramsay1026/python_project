@@ -167,5 +167,20 @@ def volunteer_add(request):
 def shelter(request):
     return HttpResponse("Hey ")
 
-def place(request):
-    return render(request, "food_app/bank.html")
+def about(request):
+    return render(request, "food_app/about.html")
+
+def about_shelters(request):
+    return render(request, "food_app/about_shelters.html")
+
+def about_suppliers(request):
+    return render(request, "food_app/about_suppliers.html")
+
+def about_volunteers(request):
+    return render(request, "food_app/about_volunteers.html")
+
+def about_team(request):
+    return render(request, "food_app/about_team.html")
+
+def contact_us(request):
+    return render(request, "food_app/contact_us.html")
