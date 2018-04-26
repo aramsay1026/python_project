@@ -188,6 +188,4 @@ def volunteer_add(request):
 def shelter(request):
     return render(request,'food_app/bank.html')
 
-def logout(request):
-    request.session.pop('user_id')
-    return redirect('/')
+

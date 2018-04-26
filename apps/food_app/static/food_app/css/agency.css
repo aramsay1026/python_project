@@ -76,6 +76,10 @@ font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-family: 'Kaushan Script', 'Helvetica Neue', Helvetica, Arial, cursive;
 }
 
+section.map{
+  background-color: #212529;
+}
+
 section {
   text-align: center;
   padding: 100px 0;
@@ -86,15 +90,26 @@ section h3.section-subheading {
   font-size: 16px;
   font-weight: 400;
   font-style: italic;
+  margin-top:10px;
   margin-bottom: 50px;
   text-transform: none;
   font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+@media (max-width: 767px) {
+  section {
+    padding: 50px;
+  }
+}
+
 @media (min-width: 768px) {
   section {
-    padding: 150px 0;
+    padding: 50px;
   }
+}
+
+section#services{
+  background-color: #f8f9fa;
 }
 
 
@@ -240,6 +255,14 @@ header#vol_heading.masthead{
   background-image: url("../img/people_table.jpg")
 }
 
+#aboutHeader{
+  background-image: url("../img/garbage.jpg")
+}
+
+#suppliersHeader{
+  background-image: url("../img/oranges.jpg")
+}
+
 header#bankHeader.masthead {
   background-image: url("../img/bank.jpg")
 }
@@ -298,10 +321,8 @@ header.masthead .intro-text .intro-heading {
   }
 }
 
-
-
 /* Full-width input fields */
-input[type=text], input[type=password].textmuted, input.textmuted {
+input[type=text], input[type=password].textmuted, input[type=email], input[type=tel], input.textmuted {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -310,6 +331,31 @@ input[type=text], input[type=password].textmuted, input.textmuted {
     color: #212529;
     background-color: #FBFEC4;
     outline: none;
+}
+
+input#name, input#email, input#phone, input#message{
+    margin:0;
+    padding:0;
+    background-color: #EFFCEF;
+}
+
+input#name:focus, input#email:focus, input#phone:focus, input#message:focus{
+  background-color: #D0F7D0;
+}
+
+textarea#message{
+  width: 100%;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    border: none;
+    color: #212529;
+    background-color: #EFFCEF;
+    outline: none;
+}
+
+textarea#message:focus{
+  background-color: #D0F7D0;
 }
 
 input.checkbox{
@@ -960,6 +1006,7 @@ section#contact .form-group input.form-control {
 
 section#contact .form-group textarea.form-control {
   height: 248px;
+  color:green;
 }
 
 section#contact .form-control:focus {
