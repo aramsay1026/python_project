@@ -101,6 +101,15 @@ def send_details(request):
                     'name':item.shelter_name,
                     'meals':item.meals_required
                 }
+        
+
+    if flag==False:
+        con={
+        'shel':'',
+        'name':this_user.first_name,
+        'meals':'45'
+        }
+
     
         # else :
         #     con={
@@ -127,9 +136,10 @@ def find_volunteer(request):
             if availability.available_date<=supplier.use_by:
                 volunteer_available=volunteer
     context={
-        'volunteer_available':volunteer_available
+        'volunteer_available':volunteer_available,
+        'name':user.first_name
     }
-    return render(request,"food_app/volunteerDeliver.html ",context)
+    return render(request,"food_app/volunteerDeliver.html",context)
 
 def volunteer_home(request):
     volunteer=User.objects.get(id=request.session['user_id'])
@@ -156,3 +166,6 @@ def volunteer_add(request):
 
 def shelter(request):
     return HttpResponse("Hey ")
+
+def place(request):
+    return render(request, "food_app/bank.html")

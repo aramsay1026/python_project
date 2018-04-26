@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Agency - Start Bootstrap Theme</title>
+    <title>Welcome to FoodShare</title>
 
     <!-- Bootstrap core CSS -->
     <link href="static/food_app/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -39,22 +39,19 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">About FoodShare</a>
+              <a class="nav-link js-scroll-trigger" href="#about">About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#services">Suppliers</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Volunteers</a>
+              <a class="nav-link js-scroll-trigger" href="#volunteers">Volunteers</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Food Banks</a>
+              <a class="nav-link js-scroll-trigger" href="#shelter">Shelters</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">Our Team</a>
+              <a class="nav-link js-scroll-trigger" href="#team">Team</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
@@ -79,7 +76,7 @@
       <!-- Log in pop up box -->
   <div id="id01" class="modal">
       <button class="close" id="log_close" title="Close Modal">&times;</button>
-          <form class="modal-content" action="/login" method="POST">
+          <form class="modal-content" action="/place" method="POST">
             {% csrf_token %}
               <div class="container">
                   <h1 class="login">Log in</h1>
@@ -135,15 +132,14 @@
                 <button type="submit" class="signupbtn" id="reg_btn">Register</button>
             </div>
           </div>
-        </form>
       </div>
 
       <!-- User Type Pop Up -->
-s
+
       <div id="id03" class="modal">
       <button class="close" id="type_close" title="Close Modal">&times;</button>
-          <form class="modal-content" id="type" action="/register_process" method="POST">
             {% csrf_token %}
+            <div class="modal-content">
               <div class="container">
                   <h1 class="user_type"><span id="great">Great! </span> How Would You Like to Help?</h1>
                     <hr>
@@ -161,11 +157,12 @@ s
                   <button type="button" id="type_cancelbtn" class="cancelbtn">Go Back</button>
                   <button type="submit" id="type_signupbtn" class="signupbtn">Finish</button>
                 </div>
-              <!-- Close container -->
               </div>
-            </form>
+              <!-- Close container -->
+            </div>
+          </form>
             <!-- Close model class -->
-          </div>
+        </div>
 
         
         <!-- Close Parent Container -->
@@ -176,14 +173,19 @@ s
 
     <!-- Services -->
     <section id="services">
-      <div class="container">
+      <div class="container" >
         <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">Services</h2>
-            <h3 class="section-subheading text-muted">Partner with us to help build a sustainable food sharing network</h3>
+          <div class="col-3">
+            </div>
+              <div class="col-lg-6 text-center" >
+                <h2 class="section-heading text-uppercase">Services</h2>
+                <h3 class="section-subheading text-muted">Partner with us to help build a sustainable food sharing network</h3>
+              </div>
+            <div class="col-3">
           </div>
         </div>
-        <div class="row text-center">
+      </div>
+    <div class="row text-center" >
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
@@ -193,7 +195,7 @@ s
             <p class="text-muted">Join our network of food banks and keep track of your inventory with our easy to use app. When you are running low available food will automatically be routed towards your shelter.</p>
           </div>
           <div class="col-md-4">
-            <span class="fa-stack fa-4x">
+            <span class="fa-stack fa-4x"   id="volunteers">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
             </span>
@@ -216,12 +218,16 @@ s
     <section id="about">
       <div class="container">
         <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">How Does FoodShare Work?</h2>
-            <h3 class="section-subheading text-muted">We easily manage to flow of available food to where it's needed the most.</h3>
+          <div class="col-1">
+            </div>
+              <div class="col-10">
+                <h2 class="section-heading text-uppercase">How Does FoodShare Work?</h2>
+                <h3 class="section-subheading text-muted">We easily manage to flow of available food to where it's needed the most.</h3>
+              </div>
+            <div class="col-1">
           </div>
         </div>
-        <div class="row">
+      <div class="row">
           <div class="col-lg-12">
             <ul class="timeline">
               <li>
@@ -283,63 +289,75 @@ s
     <section class="bg-light" id="team">
       <div class="container">
         <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+          <div class="col-2">
+            </div>
+              <div class="col-8">
+                <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+              </div>
+            <div class="col-2">
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-4">
-            <div class="team-member">
-              <img class="mx-auto rounded-circle" src="static/food_app/img/team/1.jpg" alt="">
-              <h4>Kay Garland</h4>
-              <p class="text-muted">Lead Designer</p>
-              <ul class="list-inline social-buttons">
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fa fa-twitter"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fa fa-facebook"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fa fa-linkedin"></i>
-                  </a>
-                </li>
-              </ul>
+          <div class="col-2">
             </div>
+              <div class="col-8">
+                <h3 class="section-subheading text-muted">Saving thousands of food items every week</h3>
+              </div>
+            <div class="col-2">
           </div>
-          <div class="col-sm-4">
-            <div class="team-member">
-              <img class="mx-auto rounded-circle" src="static/food_app/img/team/2.jpg" alt="">
-              <h4>Larry Parker</h4>
-              <p class="text-muted">Lead Marketer</p>
-              <ul class="list-inline social-buttons">
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fa fa-twitter"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fa fa-facebook"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fa fa-linkedin"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-4">
+        </div>
+      <div class="row">
+        <div class="col-4">
             <div class="team-member">
               <img class="mx-auto rounded-circle" src="static/food_app/img/amy_face.jpg" alt="">
+              <h4>Ipsita Aggarwal</h4>
+              <p class="text-muted">Founder</p>
+              <ul class="list-inline social-buttons">
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        <div class="col-4">
+          <div class="team-member">
+            <img class="mx-auto rounded-circle" src="static/food_app/img/amy_face.jpg" alt="">
+              <h4>Nishi Roy</h4>
+              <p class="text-muted">CFO</p>
+              <ul class="list-inline social-buttons">
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        <div class="col-4">
+          <div class="team-member">
+            <img class="mx-auto rounded-circle" src="static/food_app/img/amy_face.jpg" alt="">
               <h4>Amy Ramsay</h4>
               <p class="text-muted">Volunteer Lead</p>
               <ul class="list-inline social-buttons">
@@ -362,9 +380,9 @@ s
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <p class="large text-muted">Our vision is creating thousands of food sharing networks all around the world. We believe FoodShare can help create a world in which nothing of value goes to waste and every single person has enough to eat - without destroying our planet in the process</p>
           </div>
         </div>
       </div>

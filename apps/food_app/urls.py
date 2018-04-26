@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^volunteers$',views.volunteer_home),
     url(r'^volunteer_join$',views.volunteer_add),
     url(r'^shelter$',views.shelter),
+    url(r'^place$', views.place)
 ]
