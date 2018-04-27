@@ -6,7 +6,11 @@ from datetime import datetime,date,timedelta
 
 def home(request):
     if(not(request.session.get('user_id'))):
+<<<<<<< HEAD
+	    request.session['user_id']=0
+=======
         request.session['user_id']=0
+>>>>>>> 394045ea10d179dfc179842e96c6f5d484304ccb
     return render(request, 'food_app/index.html')
 
 
@@ -32,7 +36,12 @@ def validation(request):
         print use
         print "User type"
         print request.session['user_type']
+<<<<<<< HEAD
+        if use.id:
+            # request.session['user_type']=request.POST['type']  
+=======
         if use.id: 
+>>>>>>> 394045ea10d179dfc179842e96c6f5d484304ccb
             request.session['user_id']=use.id
             link='/'+request.session['user_type']
             return redirect(link)
@@ -92,8 +101,12 @@ def send_details(request):
                 flag=True
                 con={
                     'shel':us,                      #list of user belonging to that shelter 
+<<<<<<< HEAD
+                    'name':item.shelter_name,       #name of that shelter 
+=======
                     'name':this_user.first_name,  
                     'shelter':item.shelter_name,     #name of that shelter 
+>>>>>>> 394045ea10d179dfc179842e96c6f5d484304ccb
                     'meals':item.meals_required     #no. of meals required by that shelter
                 }
                 break
@@ -102,17 +115,35 @@ def send_details(request):
     if flag==False:
         con={
                 'shel':User.objects.get(id=18),
+<<<<<<< HEAD
+                'name':"Food For Everyone",
+=======
                 'name':this_user.first_name,
                 'shelter':"Food for Everyone",
+>>>>>>> 394045ea10d179dfc179842e96c6f5d484304ccb
                 'meals':'50'
             }
     return render(request,"food_app/supplierDeliver.html",con)
 
 
 def addSupplier(request):
+<<<<<<< HEAD
+    print "-------------------------"
+    print datetime.today().date()
+    print request.POST['cookedOn']
+    print "------------------------"
     if len(request.POST['numOfFood'])<=0 :
         messages.add_message(request, messages.ERROR, "no. of plates available has to be minimum 10")
         return redirect('/supplier')
+    # elif request.POST['cookedOn'] is '':
+    #     print "I am here"
+    #     messages.add_message(request, messages.ERROR, "The date cannot be empty")
+    #     return redirect('/supplier')
+=======
+    if len(request.POST['numOfFood'])<=0 :
+        messages.add_message(request, messages.ERROR, "no. of plates available has to be minimum 10")
+        return redirect('/supplier')
+>>>>>>> 394045ea10d179dfc179842e96c6f5d484304ccb
     elif (datetime.today()-timedelta(days=1)).date() > datetime.strptime(request.POST['cookedOn'],"%Y-%m-%d").date():
         messages.add_message(request, messages.ERROR, "The date has to be in future")
         return redirect('/supplier')
@@ -128,7 +159,11 @@ def addSupplier(request):
             return redirect('/findVolunteer')
 
 def find_volunteer(request):
+<<<<<<< HEAD
+    user=User.objects.get(id=request.session['user_id'])
+=======
     user=User.objects.get(id=request.session['user_id'])  # Supplier's object
+>>>>>>> 394045ea10d179dfc179842e96c6f5d484304ccb
     supplier=Supplier.objects.get(users=user)
     suppliers=Supplier.objects.all()
     shelters=Shelter.objects.all()
@@ -151,6 +186,15 @@ def find_volunteer(request):
                 print volunteer_available
             else:
                 print "couldn't assign volunteer"
+<<<<<<< HEAD
+    if volunteer_available:
+        context={
+        'volunteer_available':volunteer_available
+        }
+    else:
+        print "sorry no context available"
+    return render(request,"food_app/volunteerDeliver.html ",context)
+=======
 
     if volunteer_available:
         context={
@@ -169,6 +213,7 @@ def find_volunteer(request):
     Supplier.objects.filter(users=user).delete()
     
     return render(request,"food_app/volunteerDeliver.html",context)
+>>>>>>> 394045ea10d179dfc179842e96c6f5d484304ccb
 
 def volunteer_home(request):
     volunteer=User.objects.get(id=request.session['user_id'])
@@ -188,6 +233,12 @@ def volunteer_add(request):
 
 def shelter(request):
     return render(request,'food_app/bank.html')
+<<<<<<< HEAD
+
+def logout(request):
+    request.session.pop('user_id')
+    return redirect('/')
+=======
 
 def contact(request):
     val = Feedback.objects.all()
@@ -231,3 +282,4 @@ def go_home(request):
 
 def thankyou(request):
     return render(request, "food_app/thankyou.html")
+>>>>>>> 394045ea10d179dfc179842e96c6f5d484304ccb
