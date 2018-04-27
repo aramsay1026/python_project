@@ -24,8 +24,63 @@ a:hover {
   color: #65e765 !important;
 }
 
+.img-fluid {
+    max-width: 100%;
+    height: 100%;
+}
+
+#city{
+padding: 20px 7px 0 0;
+}
+
 label{
 text-align: left;
+}
+
+div.alert.error.alert-dismissible{
+  background-color: white;
+  margin:40px;
+  padding:20px;
+}
+
+button#close.close {
+  position:absolute;
+  top:-15px;
+  left:205px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  filter: alpha(opacity=20);
+  opacity: .2;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  filter: alpha(opacity=50);
+  opacity: .5;
+}
+ 
+p#message{
+  float:left;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  color: #212529;
+  margin-bottom: 10px;
+
+}
+
+#alert1{
+  display:inline-block;
+}
+
+#alert2{
+  display:inline-block;
 }
 
 .warn{
@@ -135,11 +190,11 @@ section#services{
 }
 
 .btn-primary:focus,{
-  background-color: #65e765;
+  background-color: #409340;
 }
 
 .btn-primary:hover {
-  background-color: #212529;
+  background-color: #50B850;
 }
 
 
@@ -239,7 +294,7 @@ select#shift {
 }
 
 #myHeader {
-  background-image: url(https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg);
+  background-image: url("../img/carrots-food-fresh-616404.jpg");
 }
 
 header#vol_heading.masthead{
@@ -252,19 +307,45 @@ header#vol_heading.masthead{
 }
 
 #supply_header{
-  background-image: url("../img/people_table.jpg")
+  background-image: url("../img/cafe.jpg")
 }
 
 #aboutHeader{
-  background-image: url("../img/garbage.jpg")
+  background-image: url("../img/about_landfill.jpg")
 }
 
 #suppliersHeader{
   background-image: url("../img/oranges.jpg")
 }
 
+#about_vol_Header{
+  background-image: url("../img/care-hand-hands-45842.jpg")
+}
+
+#about_shelter_Header{
+  background-image: url("../img/food_shelter.jpg")
+}
+
+#about_team_Header{
+  background-image: url("../img/adult_clothes.jpg")
+}
+
+#feedback_Header{
+  background-image: url("../img/ball.jpg")
+}
+
+#thankyou{
+  margin-right:11px;
+  color: #65e765;
+  font-family: 'Kaushan Script', 'Helvetica Neue', Helvetica, Arial, cursive;
+}
+
+#cookedOn{
+  text-align: center;
+}
+
 header#bankHeader.masthead {
-  background-image: url("../img/bank.jpg")
+  background-image: url("../img/berry.jpg")
 }
 
 header.masthead {
@@ -339,7 +420,37 @@ input#name, input#email, input#phone, input#message{
     background-color: #EFFCEF;
 }
 
+input#feed_name, input#feed_email, input#feed_phone, input#feed_message{
+    margin:0;
+    padding:0;
+    background-color: #EFFCEF;
+}
+
+
+input#feed_name:focus, input#feed_email:focus, input#feed_phone:focus{
+  background-color: #D0F7D0;
+}
+
 input#name:focus, input#email:focus, input#phone:focus, input#message:focus{
+  background-color: #D0F7D0;
+}
+
+input#first, input#second, input#last{
+  margin:20px;
+}
+
+textarea#feed_message{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    border: none;
+    color: #212529;
+    background-color: #EFFCEF;
+    outline: none;
+}
+
+textarea#feed_message:focus{
   background-color: #D0F7D0;
 }
 
@@ -472,15 +583,6 @@ z-index: 1;
 background-color: transparent;
 }
 
-/*div#id03.modal.modal-content{
-  z-index: 1;
-    text-align: left;
-    color:#212529;
-    background-color: transparent;
-    margin: 5% auto 15% auto;  5% from the top, 15% from the bottom and centered 
-    border: 1px solid #65e765;
-    width: 80%; /* Could be more or less, depending on screen size */
-
   }*/
 
 /* Style the horizontal ruler */
@@ -557,6 +659,14 @@ hr {
 
 .login, .registration, .user_type{
   margin-top:30px;
+}
+
+#supplier_select{
+  margin:15px;
+}
+
+#supplier_p{
+  margin:15px;
 }
 
 
