@@ -20,7 +20,7 @@ urlpatterns = [
     url(r'^about_volunteers$', views.about_volunteers),
     url(r'^about_shelters$', views.about_shelters),
     url(r'^about_team$', views.about_team),
-    url(r'^contact_us$', views.contact_us),
+    url(r'^contact_us$', views.contact),
     url(r'^home$', views.go_home),
     url(r'^logout$', views.logout),
     url(r'^contact_us$',views.contact),
