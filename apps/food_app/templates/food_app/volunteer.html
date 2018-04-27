@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Agency - Start Bootstrap Theme</title>
+    <title>FoodShare</title>
 
     <!-- Bootstrap core CSS -->
     <link href="static/food_app/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -84,93 +84,84 @@
     <section class="bg-light" id="portfolio">
       <div class="container">
         <div class="row">
+
           <div class="col-lg-12 text-center">
+
+            <div class="row">
+
+              <div class="col-3">
+              </div>
+              <div class="col-6">
             <h2 class="section-heading text-uppercase">Scheduled Shifts</h2>
             <h3 class="section-subheading text-muted">Dates you are on our calendar to do food runs</h3>
           </div>
+          <div class="col-3">
+          </div>
+
+        </div>
             <table>
               <tr>
                 <th>Day</th>
                 <th>Shift</th>
+                <th>Cancel?</th>
               </tr>
+              {% for item in set %}
               <tr>
-                <td>Monday</td>
-                <td>Lunch</td>
-
+                <td>{{item.available_date|date:'Y-m-d'}}</td>
+                <td>{{item.available_shift}}</td>
+                <td>
+                  <form action='/unjoin' method="post">
+                    {%csrf_token%}
+                    <input type="submit" value="cancel">
+                    <input type="hidden" name="action" value="{{item.id}}">
+                  </form>
+                </td>
               </tr>
-              <tr>
-                <td>Tuesday</td>
-                <td>Dinner</td>
-
-              </tr>
-              <tr>
-                <td>Friday</td>
-                <td>Dinner</td>
-
-              </tr>
-              <tr>
-                <td>Saturday</td>
-                <td>Lunch</td>
-
-              </tr>
-              <tr>
-                <td>Saturday</td>
-                <td>Dinner</td>
-
-              </tr>
-              <tr>
-                <td>Sunday</td>
-                <td>Lunch</td>
-
-              </tr>
+              {%endfor%}
             </table>
+           <div class="row">
+          <div class="col-lg-12 text-center">
+            <div class="row">
+              <div class="col-3">
+              </div>
+              <div class="col-6">
             <h2 class="section-heading text-uppercase">Upcoming Schedule</h2>
             <h3 class="section-subheading text-muted" >Let us know what food runs you can volunteer for</h3>
-            <table>
-              <tr>
-                <th>Day</th>
-                <th>Shift</th>
-                <th>Able to Help?</th>
-              </tr>
-              <tr>
-                <td>Monday</td>
-                <td>Lunch</td>
-                <td><input type="checkbox" class="help_out" name="bank_type">Help out!<br></td>
-
-              </tr>
-              <tr>
-                <td>Tuesday</td>
-                <td>Dinner</td>
-                <td><input type="checkbox" class="help_out" name="bank_type">Help out!<br></td>
-              </tr>
-              <tr>
-                <td>Wednesday</td>
-                <td>Dinner</td>
-                <td><input type="checkbox" class="help_out" name="bank_type">Help out!<br></td>
-              </tr>
-              <tr>
-                <td>Thursday</td>
-                <td>Dinner</td>
-                <td><input type="checkbox" class="help_out" name="bank_type">Help out!<br></td>
-              </tr>
-            </table>
+          </div>
+          <div class="col-3">
+          </div>
         </div>
-
-
-
-        <div class="row">
-          <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
-              <div class="portfolio-hover">
-                <div class="portfolio-hover-content">
-                  <i class="fa fa-plus fa-3x"></i>
+          <table>
+            <tr>
+              <th>Day</th>
+              <th>Shift</th>
+              <th>Able to Help?</th>
+            </tr>
+            <tr>
+              <form action="/volunteer_join" method="post">
+                        {%csrf_token%}
+                <td><input type="date" name="date_available"></td>
+                <td><select name="shift">
+                      <option value="lunch">Morning</option>
+                      <option value="dinner">Evening</option>
+                    </select></td>   
+                <td><input type="submit" value="Join!"></td>
+            </tr>
+          </table>
+        </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fa fa-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="static/food_app/img/truck.jpeg"  alt="">
-            </a>
-            <div class="portfolio-caption">
-              <h4>Add a Food Run</h4>
-              <p class="text-muted">Illustration</p>
+            <img class="img-fluid" src="static/food_app/img/truck.jpeg"  alt="">
+          </a>
+        <div class="portfolio-caption">
+          <h4>Add a Food Run</h4>
+            <p class="text-muted">Illustration</p>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 portfolio-item">
@@ -181,11 +172,7 @@
                 </div> 
               </div>
               <img class="img-fluid" src="static/food_app/img/vegetable_thumbnail.jpg"  alt=""> 
-              
-            </a>
-          
-
-            
+            </a>  
             <div class="portfolio-caption">
               <h4>FAQ</h4>
               <p class="text-muted">Help with Common Issues</p>
@@ -228,13 +215,15 @@
         <div class="row">
           <div class="col-lg-12">
               <div class="row">
+                <div class="col-3">
+                </div>
                 <div class="col-md-6">
-                  <form action="/home" method="POST">
-                  <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit">Return Home</button>
-                </form>
                 <form action="/logout" method="POST">
+                  {% csrf_token %}
                   <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit">Logout</button>
                 </form>
+                <div class="col-3">
+                </div>
                 </div>
               </div>
             </form>

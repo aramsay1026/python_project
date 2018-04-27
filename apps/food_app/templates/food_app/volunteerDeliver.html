@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Agency - Start Bootstrap Theme</title>
+    <title>FoodShare</title>
 
     <!-- Bootstrap core CSS -->
     <link href="static/food_app/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -82,16 +82,18 @@
     <!-- Donation Form -->
       <section id="donate">
         <div class="container">
-
-              <h2 class="section-heading text-uppercase" >Welcome {{name}} </h3>
+              <h2 class="section-heading text-uppercase" >Welcome {{supplier.first_name}} </h3>
            
-            <br><br>
-            <h3 class="section-subheading text-muted">The following volunteers are available to deliver your donation</h3>
+              <hr>
 
-             <h2> {{volunteer_available.first_name}}</h2>
-      </div>
-    </section>
+              <h3 class="section-subheading text-muted">Thank you for your donation</h3>
+     
+              <h3 class="section-subheading text-muted">Volunteer {{volunteer_available.first_name}} will be there to pick up the contribution</h3>
 
+             <h3 class="section-subheading text-muted">It will be delivered to {{shelter}}</h3>
+
+        </div>
+      </section>
   <section class="bg-light" id="portfolio">
     <div class="container">
       <div class="row">
@@ -140,22 +142,6 @@
               <p class="text-muted">Individual Donation FAQ</p>
             </div>
           </div>
-          <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-              <div class="portfolio-hover">
-                <div class="portfolio-hover-content">
-                  <i class="fa fa-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="static/food_app/img/people.jpg" alt="">
-            </a>
-            <div class="portfolio-caption">
-              <h4>Other Entities</h4>
-              <p class="text-muted">We welcome all types</p>
-            </div>
-          </div>
-          
-          
         </div>
       </div>
     </section>
@@ -167,10 +153,8 @@
           <div class="col-lg-12">
               <div class="row">
                 <div class="col-md-6">
-                  <form action="/home" method="POST">
-                  <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit">Return Home</button>
-                </form>
                 <form action="/logout" method="POST">
+                  {% csrf_token %}
                   <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit">Logout</button>
                 </form>
                 </div>
