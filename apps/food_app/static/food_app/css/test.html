@@ -1,0 +1,40 @@
+<div id="id02" class="modal">
+          <button onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">
+              &times;</button>
+            <form class="modal-content" id="register" action="/welcome" method="POST">
+              {% csrf_token %}
+              <div class="container">
+                  <h1 class ="register">Register</h1>
+                    <hr>
+  
+                      <label for="first_name"><b>First Name</b></label>
+                        <input type="text" class="textmuted" placeholder="Enter First name" name="first_name" required>
+  
+                      <label for="last_name"><b>Last Name</b></label>
+                        <input type="text" class="textmuted" placeholder="Enter Last Name" name="last_name" required>
+  
+                        <label for="address"><b>Address</b></label>
+                        <input type="text" class="textmuted" placeholder="Enter Address" name="address" required>
+  
+                        <label for="city"><b>City</b></label>
+                        <select name="city">
+                          <option value="None"></option>
+                          <option value="bellevue">Bellevue</option>
+                          <option value="Redmond">Redmond</option>
+                          <option value="Bothell">Bothell</option>
+                          <option value="Mill Creek">Mill Creek</option>
+                          <option value="Lynnwood">Lynnwood</option>
+                          <option value="Kirkland">Kirkland</option>
+                        </select><br/><br/>
+  
+                      <label for="email"><b>Email</b></label>
+                        <input type="text" class="textmuted" placeholder="Enter Email" name="email" required>
+  
+                      <label for="psw"><b>Password</b></label>
+                        <input type="password" class="textmuted" placeholder="Enter Password" name="psw" required>
+  
+                      <label for="psw"><b>Confirm Password</b></label>
+                        <input type="password" class="textmuted" placeholder="Confirm Password" name="cpsw" required>
+  
+                        <input type="checkbox" class="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+                      </label>

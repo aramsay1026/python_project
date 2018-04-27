@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Welcome to FoodShare</title>
+    <title>FoodShare</title>
 
     <!-- Bootstrap core CSS -->
     <link href="static/food_app/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -39,26 +39,25 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+              <a class="nav-link js-scroll-trigger" href="/about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Suppliers</a>
+              <a class="nav-link js-scroll-trigger" href="/about_suppliers">Suppliers</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#volunteers">Volunteers</a>
+              <a class="nav-link js-scroll-trigger" href="/about_volunteers">Volunteers</a>
+            </li>
+           <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/about_shelters">Shelters</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#shelter">Shelters</a>
+              <a class="nav-link js-scroll-trigger" href="/about_team">Team</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#team">Team</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+              <a class="nav-link js-scroll-trigger" href="/contact_us">Contact</a>
             </li>
           </ul>
         </div>
-      </div>
     </nav>
 
     <!-- Header -->    <!-- Sign in & Registration -->
@@ -68,15 +67,17 @@
         <div class="intro-lead-in">Join the Food Sharing Revolution!</div>
           <div class="intro-heading text-uppercase">You Can Make a Difference</div>
           <button class="btn btn-primary btn-xl" id="login_reg"  style="width:auto;" >Sign In/Register</button>
-        </div>
-      </div>
-        
-        
 
+                  {% for message in messages %}
+    <div class="alert {{ message.tags }} alert-dismissible" role="alert" ">
+        <button id="close" type="button" class="close" data-dismiss="alert" aria-label="Close">X</button>
+        <p id="message">{{ message }}</p>
+    </div>
+          {% endfor %}
+        
       <!-- Log in pop up box -->
   <div id="id01" class="modal">
-      <button class="close" id="log_close" title="Close Modal">&times;</button>
-          <form class="modal-content" action="/place" method="POST">
+          <form class="modal-content" action="/login" method="POST">
             {% csrf_token %}
               <div class="container">
                   <h1 class="login">Log in</h1>
@@ -99,45 +100,64 @@
             </div>
         </form>
       </div>
+
         <!-- Registration Pop up box -->
     <div id="id02" class="modal">
-        <button class="close" title="Close Modal">
-            &times;</button>
-          <form class="modal-content" id="register" action="/welcome" method="POST">
-            {% csrf_token %}
-            <div class="container">
-                <h1 class ="register">Register</h1>
-                  <hr>
+          <button onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">
+              &times;</button>
+            <form class="modal-content" id="register" action="/welcome" method="POST">
+              {% csrf_token %}
+              <div class="container">
+                  <h1 class ="register">Register</h1>
+                    <hr>
+  
+                      <label for="first_name"><b>First Name</b></label>
+                        <input type="text" class="textmuted" placeholder="Enter First name" name="first_name" required>
+  
+                      <label for="last_name"><b>Last Name</b></label>
+                        <input type="text" class="textmuted" placeholder="Enter Last Name" name="last_name" required>
 
-                    <label for="first_name"><b>First Name</b></label>
-                      <input type="text" class="textmuted" placeholder="Enter First name" name="first_name" required>
+                        <label for="email"><b>Email</b></label>
+                        <input type="text" class="textmuted" placeholder="Enter Email" name="email" required>
+  
+                      <label for="psw"><b>Password</b></label>
+                        <input type="password" class="textmuted" placeholder="Enter Password" name="psw" required>
+  
+                      <label for="psw"><b>Confirm Password</b></label>
+                        <input type="password" class="textmuted" placeholder="Confirm Password" name="cpsw" required>
+  
+                        <label for="address"><b>Address</b></label>
+                        <input type="text" class="textmuted" placeholder="Enter Address" name="address" required>
+  
+                        <label for="city" id="city"><b>City</b></label>
+                        <select id="city" name="city">
+                          <option value="None"></option>
+                          <option value="bellevue">Bellevue</option>
+                          <option value="Redmond">Redmond</option>
+                          <option value="Bothell">Bothell</option>
+                          <option value="Mill Creek">Mill Creek</option>
+                          <option value="Lynnwood">Lynnwood</option>
+                          <option value="Kirkland">Kirkland</option>
+                        </select><br/><br/>
+ 
+                    <input type="radio"  id="first" class="type_input" value="volunteer" name="type"> Willing to Volunteer<br>
+                     <span id="append_1"></span>
+ 
+                     <input type="radio" id="second" class="type_input"  value="supplier" name="type"> Have Food to Donate <br>
+                     <span id="append_2"></span>
+ 
+                     <input type="radio" id="last" class="type_input" value="bank" name="type"> Become a Registered Food Bank <br>
+                     <span id="append_3"></span>
 
-                    <label for="last_name"><b>Last Name</b></label>
-                      <input type="text" class="textmuted" placeholder="Enter Last Name" name="last_name" required>
-
-                    <label for="email"><b>Email</b></label>
-                      <input type="text" class="textmuted" placeholder="Enter Email" name="email" required>
-
-                    <label for="psw"><b>Password</b></label>
-                      <input type="password" class="textmuted" placeholder="Enter Password" name="psw" required>
-
-                    <label for="psw"><b>Confirm Password</b></label>
-                      <input type="password" class="textmuted" placeholder="Confirm Password" name="psw" required>
-
-                      <input type="checkbox" class="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-                    </label>
-
-            <div class="clearfix">
-                <button type="submit" form="register" class="cancelbtn">Cancel</button>
-                <button type="submit" class="signupbtn" id="reg_btn">Register</button>
-            </div>
-          </div>
+           <div class="clearfix">
+               <button type="submit" form="register" class="cancelbtn">Cancel</button>
+               <button type="submit" class="signupbtn" id="reg_btn">Register</button>
+           </div>
+         </div>
       </div>
 
-      <!-- User Type Pop Up -->
-
+      <!-- Registration/User Type Pop Up -->
       <div id="id03" class="modal">
-      <button class="close" id="type_close" title="Close Modal">&times;</button>
             {% csrf_token %}
             <div class="modal-content">
               <div class="container">
@@ -158,18 +178,11 @@
                   <button type="submit" id="type_signupbtn" class="signupbtn">Finish</button>
                 </div>
               </div>
-              <!-- Close container -->
             </div>
           </form>
-            <!-- Close model class -->
         </div>
-
-        
-        <!-- Close Parent Container -->
       </div>
-      <!-- Close header -->
   </header>
-
 
     <!-- Services -->
     <section id="services">
@@ -197,7 +210,7 @@
           <div class="col-md-4">
             <span class="fa-stack fa-4x"   id="volunteers">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
-              <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+              <i class="fa fa-cutlery fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">Supplier</h4>
             <p class="text-muted">Whether you are a restaurant, a catering company or an individual, we are always in need of concientious contributors who would like to donate their excess food to those in need.</p>
@@ -205,7 +218,7 @@
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
-              <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+              <i class="fa fa-child fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">Volunteer</h4>
             <p class="text-muted">Thousands have reached out to know how they can help end food waste by working with us. Volunteering is a rewarding way to help to environment and strengthen ties in your community</p>
@@ -222,7 +235,7 @@
             </div>
               <div class="col-10">
                 <h2 class="section-heading text-uppercase">How Does FoodShare Work?</h2>
-                <h3 class="section-subheading text-muted">We easily manage to flow of available food to where it's needed the most.</h3>
+                <h3 class="section-subheading text-muted">We easily manage the flow of available food to where it's needed the most.</h3>
               </div>
             <div class="col-1">
           </div>
@@ -232,7 +245,7 @@
             <ul class="timeline">
               <li>
                 <div class="timeline-image">
-                  <img class="rounded-circle img-fluid" src="static/food_app/img/about/1.jpg" alt="">
+                  <img class="rounded-circle img-fluid" src="static/food_app/img/strawberry.jpg" alt="">
                 </div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
@@ -246,7 +259,7 @@
               </li>
               <li class="timeline-inverted">
                 <div class="timeline-image">
-                  <img class="rounded-circle img-fluid" src="static/food_app/img/about/2.jpg" alt="">
+                  <img class="rounded-circle img-fluid" src="static/food_app/img/car.jpg" alt="">
                 </div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
@@ -260,7 +273,7 @@
               </li>
               <li>
                 <div class="timeline-image">
-                  <img class="rounded-circle img-fluid" src="static/food_app/img/about/3.jpg" alt="">
+                  <img class="rounded-circle img-fluid" src="static/food_app/img/bowl.jpg" alt="">
                 </div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
@@ -268,7 +281,7 @@
                     <h4 class="subheading">Food Banks Receive New Inventory</h4>
                   </div>
                   <div class="timeline-body">
-                    <p class="text-muted">Food Banks in our system are have their inventory automatically tracked. When a Food Bank is running low they are moved to the front of the line so can receive items from a volunteer when they need it the most.</p>
+                    <p class="text-muted">Food Banks in our system have their inventory automatically tracked. When a Food Bank is running low they are moved to the front of the line so they can receive items from a volunteer when they need it the most.</p>
                   </div>
                 </div>
               </li>
@@ -309,9 +322,9 @@
       <div class="row">
         <div class="col-4">
             <div class="team-member">
-              <img class="mx-auto rounded-circle" src="static/food_app/img/amy_face.jpg" alt="">
-              <h4>Ipsita Aggarwal</h4>
-              <p class="text-muted">Founder</p>
+              <img class="mx-auto rounded-circle" src="static/food_app/img/ipsita_face.jpg" alt="">
+              <h4>Founder</h4>
+              <p class="text-muted">Ipsita Aggarwal</p>
               <ul class="list-inline social-buttons">
                 <li class="list-inline-item">
                   <a href="#">
@@ -333,9 +346,9 @@
           </div>
         <div class="col-4">
           <div class="team-member">
-            <img class="mx-auto rounded-circle" src="static/food_app/img/amy_face.jpg" alt="">
-              <h4>Nishi Roy</h4>
-              <p class="text-muted">CFO</p>
+            <img class="mx-auto rounded-circle" src="static/food_app/img/nishi_face.jpg" alt="">
+              <h4>Director</h4>
+              <p class="text-muted">Nishi Roy</p>
               <ul class="list-inline social-buttons">
                 <li class="list-inline-item">
                   <a href="#">
@@ -357,9 +370,9 @@
           </div>
         <div class="col-4">
           <div class="team-member">
-            <img class="mx-auto rounded-circle" src="static/food_app/img/amy_face.jpg" alt="">
-              <h4>Amy Ramsay</h4>
-              <p class="text-muted">Volunteer Lead</p>
+            <img class="mx-auto rounded-circle" src="static/food_app/img/amy.jpg" alt="">
+              <h4>Principal</h4>
+              <p class="text-muted">Amy Ramsay</p>
               <ul class="list-inline social-buttons">
                 <li class="list-inline-item">
                   <a href="#">
@@ -388,43 +401,17 @@
       </div>
     </section>
 
-    <!-- Clients -->
-    <section class="py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 col-sm-6">
-            <a href="#">
-              <img class="img-fluid d-block mx-auto" src="static/food_app/img/logos/envato.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <a href="#">
-              <img class="img-fluid d-block mx-auto" src="static/food_app/img/logos/designmodo.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <a href="#">
-              <img class="img-fluid d-block mx-auto" src="static/food_app/img/logos/themeforest.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <a href="#">
-              <img class="img-fluid d-block mx-auto" src="static/food_app/img/logos/creative-market.jpg" alt="">
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Contact -->
     <section id="contact">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
             <h2 class="section-heading text-uppercase">Contact Us</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
           </div>
+          <div class="col-lg-12 text-center">
+            <h3 class="section-subheading text-muted">Be part of the FoodShare movement and inspire your community</h3>
         </div>
+      </div>
         <div class="row">
           <div class="col-lg-12">
             <form id="contactForm" name="sentMessage" novalidate>
@@ -466,7 +453,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-            <span class="copyright">Copyright &copy; Your Website 2018</span>
+            <span class="copyright">Copyright &copy; FoodSafe 2018</span>
           </div>
           <div class="col-md-4">
             <ul class="list-inline social-buttons">
