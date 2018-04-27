@@ -62,7 +62,7 @@ class Shelter(models.Model):
     return "<Shelter Object:{} {}>".format(self.shelter_name,self.meals_required)
 
 class Availability(models.Model):
-  available_date=models.DateTimeField()
+  available_date=models.DateField()
   available_shift=models.CharField(max_length=25)
   volunteers=models.ManyToManyField(User,related_name="availabilities")
   def __repr__(self):

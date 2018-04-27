@@ -15,6 +15,7 @@ def home(request):
 
 
 def validation(request):
+    print("I am in validation")
     errors = User.objects.basic_validator(request.POST)
     if len(errors):
         for tag, error in errors.iteritems():
@@ -44,7 +45,7 @@ def validation(request):
 >>>>>>> 394045ea10d179dfc179842e96c6f5d484304ccb
             request.session['user_id']=use.id
             link='/'+request.session['user_type']
-            return redirect(link)
+            return redirect('/supplier')
         else:
             messages.add_message(request, messages.ERROR, "Could not add new user.. Try again")
             return redirect('/')
@@ -225,9 +226,10 @@ def volunteer_home(request):
     return render(request,"food_app/volunteer.html",con_disp)
 
 def volunteer_add(request):
-    volunteer=User.objects.get(id=request.session['user_id'])
-    avail=Availability.objects.create(available_date=request.POST['date_available'],available_shift=request.POST['shift'])
-    volunteer.availabilities.add(avail)
+    if request.method == "POST":
+        volunteer=User.objects.get(id=request.session['user_id'])
+        avail=Availability.objects.create(available_date=request.POST['date_available'],available_shift=request.POST['shift'])
+        volunteer.availabilities.add(avail)
 
     return redirect('/volunteers')
 
@@ -252,7 +254,9 @@ def sendMessage(request):
     return redirect('/contact_us')
 
 def logout(request):
-    request.session.pop('user_id')
+    if request.method == "POST":
+        request.session.pop('user_id')
+
     return redirect('/')
 
 def unjoin(request):

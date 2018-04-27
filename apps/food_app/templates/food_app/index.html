@@ -61,128 +61,111 @@
     </nav>
 
     <!-- Header -->    <!-- Sign in & Registration -->
+
   <header id="myHeader" class="masthead">
     <div class="container">
       <div class="intro-text">
         <div class="intro-lead-in">Join the Food Sharing Revolution!</div>
-          <div class="intro-heading text-uppercase">You Can Make a Difference</div>
-          <button class="btn btn-primary btn-xl" id="login_reg"  style="width:auto;" >Sign In/Register</button>
+        <div class="intro-heading text-uppercase">You Can Make a Difference</div>
+        <button class="btn btn-primary btn-xl" id="login_reg"  style="width:auto;" >Sign In/Register</button>
 
-                  {% for message in messages %}
-    <div class="alert {{ message.tags }} alert-dismissible" role="alert" ">
-        <button id="close" type="button" class="close" data-dismiss="alert" aria-label="Close">X</button>
-        <p id="message">{{ message }}</p>
-    </div>
+
+
+       {% for message in messages %}
+          <div class="alert {{ message.tags }} alert-dismissible" role="alert" ">
+            <button id="close" type="button" class="close" data-dismiss="alert" aria-label="Close">X</button>
+            <p id="message">{{ message }}</p></div>
           {% endfor %}
-        
+          </div>
+
+        </div>
+      </header>
+
+                 
+
+
       <!-- Log in pop up box -->
+
   <div id="id01" class="modal">
-          <form class="modal-content" action="/login" method="POST">
+    <form class="modal-content" action="/login" method="POST">
             {% csrf_token %}
-              <div class="container">
-                  <h1 class="login">Log in</h1>
-                    <hr>
-                      <label for="email"><b>Email</b></label>
-                        <input type="text" class="textmuted" placeholder="Enter Email" name="email" required>
+      <div class="container">
 
-                      <label for="psw"><b>Password</b></label>
-                        <input type="password" class="textmuted" placeholder="Enter Password" name="psw" required>
+        <h1 class="login">Log in</h1>
+        <hr>
+        <label for="email"><b>Email</b></label>
+        <input type="text" class="textmuted" placeholder="Enter Email" name="email">
 
-                        <input type="checkbox" class="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-                      </label>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" class="textmuted" placeholder="Enter Password" name="psw">
 
-                    <p>Not a registered user? <a href="#" style="color:dodgerblue" id="reg_link">Click Here to Register</a></p>
+        <input type="checkbox" class="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+        </label>
 
-              <div class="clearfix">
-                  <button type="button" class="cancelbtn">Cancel</button>
-                  <button type="submit" class="signupbtn">Log In</button>
-              </div>
-            </div>
-        </form>
-      </div>
+        <p>Not a registered user? <a href="#" style="color:dodgerblue" id="reg_link">Click Here to Register</a></p>
 
-        <!-- Registration Pop up box -->
-    <div id="id02" class="modal">
-          <button onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">
-              &times;</button>
-            <form class="modal-content" id="register" action="/welcome" method="POST">
-              {% csrf_token %}
-              <div class="container">
-                  <h1 class ="register">Register</h1>
-                    <hr>
-  
-                      <label for="first_name"><b>First Name</b></label>
-                        <input type="text" class="textmuted" placeholder="Enter First name" name="first_name" required>
-  
-                      <label for="last_name"><b>Last Name</b></label>
-                        <input type="text" class="textmuted" placeholder="Enter Last Name" name="last_name" required>
-
-                        <label for="email"><b>Email</b></label>
-                        <input type="text" class="textmuted" placeholder="Enter Email" name="email" required>
-  
-                      <label for="psw"><b>Password</b></label>
-                        <input type="password" class="textmuted" placeholder="Enter Password" name="psw" required>
-  
-                      <label for="psw"><b>Confirm Password</b></label>
-                        <input type="password" class="textmuted" placeholder="Confirm Password" name="cpsw" required>
-  
-                        <label for="address"><b>Address</b></label>
-                        <input type="text" class="textmuted" placeholder="Enter Address" name="address" required>
-  
-                        <label for="city" id="city"><b>City</b></label>
-                        <select id="city" name="city">
-                          <option value="None"></option>
-                          <option value="bellevue">Bellevue</option>
-                          <option value="Redmond">Redmond</option>
-                          <option value="Bothell">Bothell</option>
-                          <option value="Mill Creek">Mill Creek</option>
-                          <option value="Lynnwood">Lynnwood</option>
-                          <option value="Kirkland">Kirkland</option>
-                        </select><br/><br/>
- 
-                    <input type="radio"  id="first" class="type_input" value="volunteer" name="type"> Willing to Volunteer<br>
-                     <span id="append_1"></span>
- 
-                     <input type="radio" id="second" class="type_input"  value="supplier" name="type"> Have Food to Donate <br>
-                     <span id="append_2"></span>
- 
-                     <input type="radio" id="last" class="type_input" value="bank" name="type"> Become a Registered Food Bank <br>
-                     <span id="append_3"></span>
-
-           <div class="clearfix">
-               <button type="submit" form="register" class="cancelbtn">Cancel</button>
-               <button type="submit" class="signupbtn" id="reg_btn">Register</button>
-           </div>
-         </div>
-      </div>
-
-      <!-- Registration/User Type Pop Up -->
-      <div id="id03" class="modal">
-            {% csrf_token %}
-            <div class="modal-content">
-              <div class="container">
-                  <h1 class="user_type"><span id="great">Great! </span> How Would You Like to Help?</h1>
-                    <hr>
-                    
-                      <input type="checkbox"  id="first" class="type_input" name="vol_type"> Willing to Volunteer<br>
-                      <span id="append_1"></span>
-
-                      <input type="checkbox" id="second" class="type_input" name="sup_type"> Have Food to Donate <br>
-                      <span id="append_2"></span>
-
-                      <input type="checkbox" id="last" class="type_input" name="bank_type"> Become a Registered Food Bank <br>
-                      <span id="append_3"></span>
-
-                <div class="clearfix">
-                  <button type="button" id="type_cancelbtn" class="cancelbtn">Go Back</button>
-                  <button type="submit" id="type_signupbtn" class="signupbtn">Finish</button>
-                </div>
-              </div>
-            </div>
-          </form>
+        <div class="clearfix">
+          <button type="button" class="cancelbtn">Cancel</button>
+          <button type="submit" class="signupbtn">Log In</button>
         </div>
       </div>
-  </header>
+    </form>
+  </div>
+
+        <!-- Registration Pop up box -->
+  <div id="id02" class="modal">
+    <form class="modal-content" action="/welcome" method="POST">
+              {% csrf_token %}
+      <div class="container">
+
+        <h1 class ="register">Register</h1>
+        <hr>
+  
+        <label for="first_name"><b>First Name</b></label>
+        <input type="text" class="textmuted" placeholder="Enter First name" name="first_name">
+  
+        <label for="last_name"><b>Last Name</b></label>
+        <input type="text" class="textmuted" placeholder="Enter Last Name" name="last_name">
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" class="textmuted" placeholder="Enter Email" name="email">
+  
+        <label for="psw"><b>Password</b></label>
+        <input type="password" class="textmuted" placeholder="Enter Password" name="psw">
+  
+        <label for="psw"><b>Confirm Password</b></label>
+        <input type="password" class="textmuted" placeholder="Confirm Password" name="cpsw">
+  
+        <label for="address"><b>Address</b></label>
+        <input type="text" class="textmuted" placeholder="Enter Address" name="address">
+  
+        <label for="city" id="city"><b>City</b></label>
+        <select id="city" name="city">
+          <option value="None"></option>
+          <option value="bellevue">Bellevue</option>
+          <option value="Redmond">Redmond</option>
+          <option value="Bothell">Bothell</option>
+          <option value="Mill Creek">Mill Creek</option>
+          <option value="Lynnwood">Lynnwood</option>
+          <option value="Kirkland">Kirkland</option>
+        </select><br/><br/>
+ 
+        <input type="radio"  id="first" class="type_input" value="volunteer" name="type"> Willing to Volunteer<br>
+        <span id="append_1"></span>
+ 
+        <input type="radio" id="second" class="type_input"  value="supplier" name="type"> Have Food to Donate <br>
+        <span id="append_2"></span>
+ 
+        <input type="radio" id="last" class="type_input" value="bank" name="type"> Become a Registered Food Bank <br>
+        <span id="append_3"></span>
+
+        <div class="clearfix">
+          <button type="button" class="cancelbtn">Cancel</button>
+          <button type="submit" class="signupbtn" id="reg_btn">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
     <!-- Services -->
     <section id="services">

@@ -37,13 +37,39 @@ label{
 text-align: left;
 }
 
-div.alert.error.alert-dismissible{
-  background-color: white;
-  margin:40px;
-  padding:20px;
+@media (min-width: 992px){
+  div.alert {
+    height:100%;
+    width:100%;
+    background-color: white;
+    margin:40px;
+    padding:40px;
+    z-index:10;
+  }
 }
 
+@media (max-width: 991px){
+  div.alert {
+    height:100%;
+    width:100%;
+    background-color: white;
+    margin:40px;
+    padding:40px;
+    z-index:10;
+  }
+}
+
+p#message{
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  color: #212529;
+  padding: 100px;
+
+} 
+
 button#close.close {
+  padding:100px;
   position:absolute;
   top:-15px;
   left:205px;
@@ -64,24 +90,7 @@ button#close.close {
   filter: alpha(opacity=50);
   opacity: .5;
 }
- 
-p#message{
-  float:left;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 1;
-  color: #212529;
-  margin-bottom: 10px;
 
-}
-
-#alert1{
-  display:inline-block;
-}
-
-#alert2{
-  display:inline-block;
-}
 
 .warn{
   line-height: 1.75;
