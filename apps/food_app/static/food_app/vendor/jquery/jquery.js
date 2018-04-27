@@ -6,8 +6,6 @@ $( document ).ready(function() {
 
     $('#id01').hide();
     $('#id02').hide();
-    $('#id03').hide();
-
 
   	$("button#login_reg").click(function(){
       $(this).hide();
@@ -32,11 +30,6 @@ $( document ).ready(function() {
       $("button#login_reg").show();
       $('#id02').hide();
       $('#id01').hide();
-    });
-
-    $("#reg_btn").click(function(){
-    	$('#id02').hide();
-    	$("#id03").show();
     });
 
     $(".cancelbtn").click(function(){
